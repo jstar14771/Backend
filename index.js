@@ -14,14 +14,9 @@ app.use(cors({
     credentials: true
 }));
 app.use(cookieparser())
-const mongoURL = process.env.MONGO_URL;
 
-if (!mongoURL) {
-    console.error('MONGO_URL environment variable is not set.');
-    process.exit(1);
-}
 
-mongoose.connect(mongoURL)
+mongoose.connect(process.env.MONGO_URL)
     .then(() => {
         console.log('Connected to MongoDB');
     })
