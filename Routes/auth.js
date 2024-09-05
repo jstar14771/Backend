@@ -12,18 +12,20 @@ const clearAllCookies = (req, res, next) => {
         return next();
     }
 
+    const isProduction = process.env.NODE_ENV === 'production';
     const cookieArray = cookies.split(';').map(cookie => cookie.trim());
 
     cookieArray.forEach(cookie => {
         const cookieName = cookie.split('=')[0];
         res.cookie(cookieName, '', {
-            path: '/' ,
-            expires: new Date(0)
-            
+            path: '/',
+            httpOnly: true,
+            sameSite: isProduction ? 'none' : 'lax',
+            secure: isProduction,
+            expires: new Date(0)  
         });
     });
 
-   
     next();
 };
 

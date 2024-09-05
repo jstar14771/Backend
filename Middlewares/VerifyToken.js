@@ -6,7 +6,7 @@ export const verifyT=(req,res,next)=>{
   
     try{
         const cookie=req.headers.cookie;
-        console.log("verify"+cookie)
+        
         if(!cookie) return res.status(401).json({message:"please Login"})
             const actualtoken=cookie.split("=")[1].trim();
         
