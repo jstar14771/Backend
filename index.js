@@ -10,7 +10,7 @@ const app=express();
 dot.config()
 app.use(express.json());
 app.use(cors({
-    origin: ['http://localhost:3000', 'https://myjstar.vercel.app'], 
+    origin: ['http://localhost:3000', 'https://myjstar.vercel.app','https://arjunravuri.vercel.app','https://nandu.vercel.app'], 
     credentials: true
 }));
 app.use(cookieparser())
